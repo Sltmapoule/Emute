@@ -36,7 +36,7 @@ public class FFT {
 
 
     // transformée de fourier inverse (n puissance de 2)
-    public static Complex[] ifft(Complex[] x) {
+    public Complex[] ifft(Complex[] x) {
         int n = x.length;
         Complex[] y = new Complex[n];
 
@@ -63,7 +63,7 @@ public class FFT {
     }
 
     // convolution circulaire
-    public static Complex[] cconvolve(Complex[] x, Complex[] y) {
+    public Complex[] cconvolve(Complex[] x, Complex[] y) {
 
         if (x.length != y.length) {
             throw new IllegalArgumentException("Dimensions don't agree");
@@ -84,7 +84,7 @@ public class FFT {
 
 
     // convolution complexe
-    public static Complex[] convolve(Complex[] x, Complex[] y) {
+    public Complex[] convolve(Complex[] x, Complex[] y) {
         Complex ZERO = new Complex(0, 0);
 
         Complex[] a = new Complex[2*x.length];
@@ -119,6 +119,7 @@ public class FFT {
     public FFT(Complex[] x) {
         Complex[] fft_x = this.fft(x);
         Complex[] dft_x = this.dft(x);
+
     }
 
     public Complex[] getFft_x(Complex[] bufferfft) {

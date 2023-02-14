@@ -4,12 +4,15 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import java.io.*;
+import java.util.Arrays;
 
 
 public class Main extends Application {
 
     MyAudio audio = new MyAudio();
-    MyChart chart = new MyChart();
+    double[] truc = {1,2,3};
+    MyChart chart = new MyChart(truc,truc);
+    Filter test = new Filter();
 
 
     @Override
@@ -26,11 +29,12 @@ public class Main extends Application {
 
         pane.getChildren().add(audio.getPane());
         pane.getChildren().add(chart.getPane());
+        pane.getChildren().add(test.getPane());
         chart.getPane().setTranslateY(50);
+        test.getPane().setTranslateX(200);
+
 
     }
-
-
 
     public static void main(String[] args){
         launch(args);

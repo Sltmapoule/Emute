@@ -1,0 +1,36 @@
+<component name="libraryTable">
+  <library name="github.psambit9791.jdsp" type="repository">
+    <properties maven-id="com.github.psambit9791:jdsp:2.0.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../jdsp/jdsp-2.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/xchart-3.8.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/VectorGraphics2D-0.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/graphics2d-0.30.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/pdfbox-2.0.22.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/fontbox-2.0.22.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/animated-gif-lib-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/ssj-3.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/jfreechart-1.0.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/jcommon-1.0.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/colt-1.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/concurrent-1.3.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/optimization-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/commons-math3-3.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/iirj-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/wavfile-0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/junit-jupiter-engine-5.0.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/apiguardian-api-1.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/junit-platform-engine-1.0.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/junit-platform-commons-1.0.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/opentest4j-1.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/junit-jupiter-api-5.0.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/junit-platform-surefire-provider-1.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/junit-platform-launcher-1.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/surefire-api-2.19.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../jdsp/common-java5-2.19.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

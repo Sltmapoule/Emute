@@ -1,16 +1,19 @@
+import com.github.psambit9791.jdsp.filter.Bessel;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import org.apache.commons.math3.analysis.function.Sin;
+
 import java.io.*;
+import java.util.Arrays;
+
 
 public class Main extends Application {
 
     MyAudio audio = new MyAudio();
-    double[] abs = new double[200000];
-    double[] ord = new double[200000];
-    Filter test = new Filter();
+
 
 
     @Override
@@ -25,21 +28,39 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        for(int i=0;i<200000;i++){
-            abs[i]=i;
-            ord[i]=2*Math.cos(i);
-        }
-        MyChart chart = new MyChart(abs,ord);
-
-
         pane.getChildren().add(audio.getPane());
-        pane.getChildren().add(test.getPane());
+
+
+
+        double sampleRate = 10000;
+        double frequency = 400;
+        double amplitude = 8;
+        double seconds = 5;
+        double twoPiF = 2*Math.PI*frequency;
+        double [] buffer = new double[(int)(seconds*sampleRate)];
+        double [] time = new double[(int)(seconds*sampleRate)];
+        Complex[] bufferfft = new Complex[(int)(seconds*sampleRate)];
+        for(int sample = 0; sample < buffer.length; sample++){
+            time[sample] =sample/sampleRate;
+            buffer[sample] = (float)(amplitude*(Math.sin(10*Math.PI*(time[sample]))+Math.sin(20*Math.PI*(time[sample]))+Math.sin(30*Math.PI*(time[sample]))));
+            bufferfft[sample]= new Complex(buffer[sample],0 );
+        }
+        FFT fft = new FFT((Complex[]) bufferfft);
+        fft.getFft_x(bufferfft);
+
+        int Fs = 100; //Sampling Frequency in Hz
+        int order = 4; //order of the filter
+        int cutOff = 9; //Cut-off Frequency
+        Bessel flt = new Bessel(Fs); //signal is of type double[]
+
+        double[] result = flt.lowPassFilter(buffer, order, cutOff); //get the result after filtering
+
+        MyChart chart = new MyChart(time,buffer);
+
         pane.getChildren().add(chart.getPane());
         chart.getPane().setTranslateY(50);
-        test.getPane().setTranslateX(200);
-
-
     }
+
 
     public static void main(String[] args){
         launch(args);

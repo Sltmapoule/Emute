@@ -1,18 +1,17 @@
 import com.github.psambit9791.jdsp.filter.Bessel;
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import org.apache.commons.math3.analysis.function.Sin;
-
 import java.io.*;
-import java.util.Arrays;
 
 
 public class Main extends Application {
 
     MyAudio audio = new MyAudio();
+    Filter filter = new Filter();
 
 
 
@@ -24,18 +23,18 @@ public class Main extends Application {
         Pane pane = new Pane();
         pane.setStyle("-fx-background-color : #000000;");
         Scene scene = new Scene(pane,800, 600, true);
+        pane.getChildren().add(filter.getPane());
+        filter.getPane().setTranslateX(200);
 
         primaryStage.setScene(scene);
         primaryStage.show();
 
         pane.getChildren().add(audio.getPane());
 
-
-
-        double sampleRate = 10000;
+        double sampleRate = 4096;
         double frequency = 400;
         double amplitude = 8;
-        double seconds = 5;
+        double seconds = 4;
         double twoPiF = 2*Math.PI*frequency;
         double [] buffer = new double[(int)(seconds*sampleRate)];
         double [] time = new double[(int)(seconds*sampleRate)];
@@ -45,8 +44,7 @@ public class Main extends Application {
             buffer[sample] = (float)(amplitude*(Math.sin(10*Math.PI*(time[sample]))+Math.sin(20*Math.PI*(time[sample]))+Math.sin(30*Math.PI*(time[sample]))));
             bufferfft[sample]= new Complex(buffer[sample],0 );
         }
-        FFT fft = new FFT((Complex[]) bufferfft);
-        fft.getFft_x(bufferfft);
+
 
         int Fs = 100; //Sampling Frequency in Hz
         int order = 4; //order of the filter
@@ -59,12 +57,23 @@ public class Main extends Application {
 
         pane.getChildren().add(chart.getPane());
         chart.getPane().setTranslateY(50);
+        at.start();
     }
 
+    AnimationTimer at = new AnimationTimer() {
+        @Override
+        public void handle(long l) {
+            filter.update();
+
+
+        }
+    };
 
     public static void main(String[] args){
         launch(args);
 
+
     }
+
 
 }

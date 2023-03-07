@@ -114,6 +114,8 @@ public class FFT {
         }
         return y;
     }
+
+
     Complex[] fft_x;
     Complex[] dft_x;
     public FFT(Complex[] x) {
